@@ -96,12 +96,20 @@ passport.serializeUser(function (user, done) {
 // });
 
 // Retrieve user data from session
-passport.deserializeUser(async function (id, done) {
+// passport.deserializeUser(async function (id, done) {
+//   try {
+//     const user = await User.findById(id);
+//     done(null, user);
+//   } catch (error) {
+//     done(error, null);
+//   }
+// });
+passport.deserializeUser(async (id, done) => {
   try {
     const user = await User.findById(id);
     done(null, user);
-  } catch (error) {
-    done(error, null);
+  } catch (err) {
+    done(err, null);
   }
 });
 
