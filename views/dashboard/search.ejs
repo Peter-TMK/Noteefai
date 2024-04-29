@@ -1,9 +1,7 @@
-# Noteefai
-
 <div class="container-fluid container-fluid-custom pb-5 mb-5">
   <div class="row">
     <!-- Display number of search items found -->
-    <p><%= searchResults.length %> result(s) found!</p>
+    <p><%= searchResults.length %> result(s) found in the title(s) below!</p>
     <% if(searchResults != '') { %> <% searchResults.forEach(function (note,
     index) { %>
 
@@ -14,6 +12,5 @@
     <% }) %> <% } else { %>
     <p>Sorry, Nothing found!</p>
     <% } %>
-
   </div>
 </div>
