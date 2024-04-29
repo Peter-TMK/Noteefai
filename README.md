@@ -1,19 +1,7 @@
 # Noteefai
 
-<div class="container-fluid container-fluid-custom pb-5 mb-5">
-  <div class="row">
-    <!-- Display number of search items found -->
-    <p><%= searchResults.length %> result(s) found!</p>
-    <% if(searchResults != '') { %> <% searchResults.forEach(function (note,
-    index) { %>
+Noteefai is a note-taking application that provides users with a convenient platform to create, manage, and organize their notes seamlessly.
 
-    <a href="/dashboard/item/<%= note._id %>">
-      <h4><%= note.title %></h4>
-    </a>
+Users can register and log in using their Google accounts, ensuring authentication and personalized access. Once logged in, they can create new notes, edit existing ones, and categorize them for easy retrieval. The application offers a responsive dashboard interface, allowing users to view, search, and filter their notes effortlessly.
 
-    <% }) %> <% } else { %>
-    <p>Sorry, Nothing found!</p>
-    <% } %>
-
-  </div>
-</div>
+Additionally, the app implements robust validation and testing features to ensure data integrity, security, and reliability. With its user-friendly interface and comprehensive functionality, this note-taking app simplifies the process of capturing and organizing thoughts, ideas, tasks, and reminders for individuals and professionals alike.
