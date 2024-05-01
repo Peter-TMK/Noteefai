@@ -1,4 +1,6 @@
 const mongoose = require("mongoose");
+const Joi = require("joi");
+
 const Note = require("../models/Notes");
 
 // exports.dashboard = async (req, res) => {
@@ -245,8 +247,8 @@ exports.dashboard = async (req, res) => {
       { $match: { user: new mongoose.Types.ObjectId(req.user.id) } },
       {
         $project: {
-          title: { $substr: ["$title", 0, 30] },
-          body: { $substr: ["$body", 0, 200] },
+          title: { $substr: ["$title", 0, 50] },
+          body: { $substr: ["$body", 0, 500] },
         },
       },
     ])
@@ -322,6 +324,81 @@ exports.dashboardSubmitNote = async (req, res) => {
   } catch (error) {
     console.log(error);
   }
+
+  // try {
+  //   // Define validation schema using Joi
+  //   const schema = Joi.object({
+  //     title: Joi.string().max(5).required(), // Maximum 50 characters for title
+  //     body: Joi.string().max(200).required(), // Maximum 200 characters for body
+  //   });
+
+  //   // Validate the request body against the schema
+  //   const { error, value } = schema.validate(req.body, { abortEarly: false });
+
+  //   // If validation fails
+  //   if (error) {
+  //     // Extract validation errors
+  //     const errors = error.details.map((err) => err.message);
+  //     // Render the add note form again with error messages
+  //     return res.render("dashboard/add", {
+  //       layout: "../views/layouts/dashboard",
+  //       errors,
+  //     });
+  //   }
+
+  //   // Create a new note using the Note model
+  //   req.body.user = req.user.id;
+  //   await Note.create(req.body);
+  //   res.redirect("/dashboard");
+  // } catch (error) {
+  //   console.log(error);
+  //   res.status(500).send("Internal Server Error");
+  // }
+
+  // try {
+  //   req.body.user = req.user.id;
+
+  //   // Validate the input fields
+  //   const errors = []; // Initialize an empty errors array
+
+  //   // Check if title is empty
+  //   if (!req.body.title) {
+  //     errors.push("Title is required");
+  //   }
+
+  //   // Check if body is empty
+  //   if (!req.body.body) {
+  //     errors.push("Body is required");
+  //   }
+
+  //   // Check if title exceeds the length limit
+  //   if (req.body.title.length > 3) {
+  //     // Replace MAX_TITLE_LENGTH with the maximum allowed length for the title
+  //     errors.push("Title length exceeds the maximum limit");
+  //   }
+
+  //   // Check if body exceeds the length limit
+  //   if (req.body.body.length > 5) {
+  //     // Replace MAX_BODY_LENGTH with the maximum allowed length for the body
+  //     errors.push("Body length exceeds the maximum limit");
+  //   }
+
+  //   // If there are errors, render the add.ejs file with the errors array
+  //   if (errors.length > 0) {
+  //     return res.render("dashboard/add", {
+  //       layout: "../views/layouts/dashboard",
+  //       errors: errors, // Pass the errors array to the template
+  //       title: req.body.title, // Pass the submitted title value to retain it in the form
+  //       body: req.body.body, // Pass the submitted body value to retain it in the form
+  //     });
+  //   }
+
+  // If there are no errors, create the note and redirect to dashboard
+  //   await Note.create(req.body);
+  //   res.redirect("/dashboard");
+  // } catch (error) {
+  //   console.log(error);
+  // }
 };
 
 exports.dashboardSearch = async (req, res) => {
