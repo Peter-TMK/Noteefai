@@ -2,6 +2,10 @@ const express = require("express");
 const router = express.Router();
 const dashboardController = require("../controllers/dashboardController");
 const { isLoggedIn } = require("../middleware/checkAuth");
+const {
+  noteValidationMiddleWare,
+  updateNoteValidationMiddleware,
+} = require("../utils/validators/notesValidator");
 
 router.get("/dashboard", isLoggedIn, dashboardController.dashboard);
 router.get(
@@ -12,6 +16,7 @@ router.get(
 router.put(
   "/dashboard/item/:id",
   isLoggedIn,
+  updateNoteValidationMiddleware,
   dashboardController.dashboardUpdateNote
 );
 router.delete(
@@ -23,6 +28,7 @@ router.get("/dashboard/add", isLoggedIn, dashboardController.dashboardAddNote);
 router.post(
   "/dashboard/add",
   isLoggedIn,
+  noteValidationMiddleWare,
   dashboardController.dashboardSubmitNote
 );
 router.get(
