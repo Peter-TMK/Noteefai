@@ -4,7 +4,7 @@ const mainController = require("../controllers/mainController");
 
 // router.get("/", (req, res) => {
 //   const locals = {
-//     title: "Noteefaiz",
+//     title: "Noteefai",
 //     description: "Note-taking App",
 //   };
 //   res.render("index", locals);

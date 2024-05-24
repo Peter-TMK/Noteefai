@@ -1,7 +1,7 @@
 exports.homepage = async (req, res) => {
   // router.get("/", (req, res) => {
   const locals = {
-    title: "Noteefaiz",
+    title: "Noteefai",
     description: "Note-taking App",
   };
   res.render("index", { locals, layout: "../views/layouts/front-page" });
@@ -10,7 +10,7 @@ exports.homepage = async (req, res) => {
 exports.about = async (req, res) => {
   // router.get("/", (req, res) => {
   const locals = {
-    title: "About - Noteefaiz",
+    title: "About - Noteefai",
     description: "About - Note-taking App",
   };
   res.render("about", locals);
